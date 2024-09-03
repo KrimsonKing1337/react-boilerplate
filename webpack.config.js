@@ -1,6 +1,8 @@
+const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const path = require('path');
 
@@ -18,6 +20,9 @@ module.exports = (env = {}, argv) => {
           syntactic: true,
         },
       },
+    }),
+    new DefinePlugin({
+      'process.env': JSON.stringify(webpackMode),
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -53,6 +58,18 @@ module.exports = (env = {}, argv) => {
         },
       ],
     },
+    {
+      test: /\.(jpeg|jpg|png|docx)$/i,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            esModule: false,
+          },
+        },
+      ],
+    },
+    { test: /\.(woff|woff2|eot|ttf|otf)$/, use: ['url-loader?limit=100000'] },
   ];
 
   const buildDir = path.join(__dirname, 'dist');
@@ -90,5 +107,8 @@ module.exports = (env = {}, argv) => {
       rules: rules,
     },
     plugins: plugins,
+    optimization: {
+      minimizer: [new TerserPlugin({ extractComments: false })],
+    },
   };
 };
