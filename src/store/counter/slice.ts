@@ -13,8 +13,8 @@ const slice = createSlice({
     setCount(state, action: PayloadAction<State['count']>) {
       state.count = action.payload;
     },
-    increment(_state) {},
-    decrement(_state) {},
+    increment() {},
+    decrement() {},
   },
 });
 

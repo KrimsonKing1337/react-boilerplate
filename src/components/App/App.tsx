@@ -18,4 +18,4 @@ export const App = () => {
       </Wrapper>
     </div>
   );
-}
+};
