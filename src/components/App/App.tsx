@@ -3,7 +3,7 @@ import { pokemonApi } from 'api';
 import { Wrapper, Counter } from 'components';
 
 export const App = () => {
-  const { data, error, isLoading } = pokemonApi.useGetPokemonByNameQuery('bulbasaur');
+  const { data, error, isLoading } = pokemonApi.useGetPokemonByNameQuery('bulbasaur')
 
   return (
     <div>
