@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-
 import createSagaMiddleware from 'redux-saga';
 
 import { pokemonApi, jsonPlaceholderApi } from 'api';
