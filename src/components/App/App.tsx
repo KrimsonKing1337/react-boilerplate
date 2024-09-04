@@ -1,9 +1,19 @@
-import { pokemonApi } from 'api';
+import { pokemonApi, jsonPlaceholderApi } from 'api';
 
 import { Wrapper, Counter } from 'components';
 
 export const App = () => {
-  const { data, error, isLoading } = pokemonApi.useGetPokemonByNameQuery('bulbasaur');
+  const {
+    data: pokemonData,
+    error: pokemonError,
+    isLoading: pokemonIsLoading,
+  } = pokemonApi.useGetPokemonByNameQuery('bulbasaur');
+
+  const {
+    data: jsonPlaceholderData,
+    error: jsonPlaceholderError,
+    isLoading: jsonPlaceholderIsLoading,
+  } = jsonPlaceholderApi.useGetJsonPlaceholderByIdQuery('1');
 
   return (
     <div>
@@ -28,21 +38,47 @@ export const App = () => {
       </Wrapper>
 
       <Wrapper>
-        {isLoading && (
+        {pokemonIsLoading && (
           <div>
-            loading...
+            Pokemon is loading...
           </div>
         )}
 
-        {error && (
+        {pokemonError && (
           <div>
-            Oh no, there was an error
+            Oh no, there was an error in pokemon
           </div>
         )}
 
-        {data && (
+        {pokemonData && (
           <h3>
-            {data.name}
+           Pokemon: {pokemonData.name}
+          </h3>
+        )}
+      </Wrapper>
+
+      <Wrapper>
+        <h4>
+          Another one example of using RTK query (see sources)
+        </h4>
+      </Wrapper>
+
+      <Wrapper>
+        {jsonPlaceholderIsLoading && (
+          <div>
+            Json placeholder is loading...
+          </div>
+        )}
+
+        {jsonPlaceholderError && (
+          <div>
+            Oh no, there was an error in json placeholder
+          </div>
+        )}
+
+        {jsonPlaceholderData && (
+          <h3>
+            {jsonPlaceholderData.title}
           </h3>
         )}
       </Wrapper>
