@@ -2,21 +2,25 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import createSagaMiddleware from 'redux-saga';
 
+import { pokemonApi } from 'api';
+
 import { counterReducer, watchCounterActions } from './counter';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducer = {
   counter: counterReducer,
+  [pokemonApi.reducerPath]: pokemonApi.reducer,
 };
 
-const middleware = [
+const middlewares = [
   sagaMiddleware,
+  pokemonApi.middleware,
 ];
 
 export const store = configureStore({
   reducer,
-  middleware,
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(middlewares),
 });
 
 sagaMiddleware.run(watchCounterActions);
