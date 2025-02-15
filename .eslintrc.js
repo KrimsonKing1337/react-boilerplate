@@ -1,4 +1,4 @@
-{
+module.exports = {
   "parser": "@typescript-eslint/parser",
   "plugins": ["import", "@typescript-eslint", "react", "react-hooks", "jest"],
   "extends": [
@@ -18,6 +18,7 @@
       "error",
       {
         "newlines-between": "always",
+        "new-line-between-groups": "",
         "groups": [["builtin", "external"], "internal", ["parent", "sibling", "index"]],
         "pathGroups": [
           {
