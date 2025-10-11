@@ -54,7 +54,10 @@ module.exports = (env = {}, argv) => {
           },
         },
         {
-          loader: 'sass-loader'
+          loader: 'sass-loader',
+          options: {
+            api: 'modern',
+          },
         },
       ],
     },
