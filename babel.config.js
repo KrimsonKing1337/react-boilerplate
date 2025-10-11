@@ -8,7 +8,7 @@ module.exports = function (api) {
   ];
 
   const plugins = [
-    ['@babel/transform-runtime', { useESModules: true, regenerator: true }],
+    ['@babel/plugin-transform-runtime', { useESModules: true, regenerator: true }],
   ];
 
   return {
