@@ -49,7 +49,7 @@ module.exports = {
   testEnvironment: 'jsdom',
 
   transform: {
-    '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': ['babel-jest', { configFile: './config/jest/babel.test.config.js' }],
+    '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': ['babel-jest', { configFile: './config/jest/babel.config.js' }],
     '^.+\\.css$': '<rootDir>/config/jest/css-transform.js',
     '^(?!.*\\.(t|j)sx?|css|json)$': '<rootDir>/config/jest/file-transform.js',
   },
