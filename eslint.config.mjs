@@ -23,7 +23,14 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
-export default defineConfig([globalIgnores(['**/*.js']), {
+const ignores = [
+  '**/*.js',
+  'eslint.config.mjs',
+];
+
+const globIgnores = globalIgnores(ignores);
+
+export default defineConfig([globIgnores, {
   extends: compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended'),
 
   plugins: {
@@ -67,7 +74,7 @@ export default defineConfig([globalIgnores(['**/*.js']), {
           pattern: 'react',
           group: 'external',
           position: 'before',
-        }
+        },
       ],
 
       pathGroupsExcludedImportTypes: [],
