@@ -1,7 +1,6 @@
-import { Wrapper, Counter } from 'components';
-
 import { pokemonApi, jsonPlaceholderApi } from 'api';
 
+import { Wrapper, Counter } from 'components';
 
 export const App = () => {
   const {
