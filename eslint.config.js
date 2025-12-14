@@ -26,6 +26,7 @@ const compat = new FlatCompat({
 const ignores = [
   '**/*.js',
   'eslint.config.js',
+  'lib'
 ];
 
 const globIgnores = globalIgnores(ignores);
@@ -75,12 +76,12 @@ export default defineConfig([globIgnores, {
         { pattern: 'react', group: 'external', position: 'before' },
         { pattern: 'react-redux', group: 'external', position: 'after' },
 
-        { pattern: 'assets', group: 'internal', position: 'before' },
-        { pattern: 'api', group: 'internal', position: 'after' },
-        { pattern: 'store', group: 'internal', position: 'after' },
-        { pattern: 'hooks', group: 'internal', position: 'after' },
-        { pattern: 'components', group: 'internal', position: 'after' },
-        { pattern: 'utils', group: 'internal', position: 'after' },
+        { pattern: 'assets{,/**}', group: 'internal', position: 'before' },
+        { pattern: 'api{,/**}', group: 'internal', position: 'after' },
+        { pattern: 'store{,/**}', group: 'internal', position: 'after' },
+        { pattern: 'hooks{,/**}', group: 'internal', position: 'after' },
+        { pattern: 'components{,/**}', group: 'internal', position: 'after' },
+        { pattern: 'utils{,/**}', group: 'internal', position: 'after' },
       ],
 
       pathGroupsExcludedImportTypes: ['builtin'],
