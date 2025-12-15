@@ -1,6 +1,4 @@
-/* eslint-disable */
-
 declare module '*.scss' {
-  const content: Record<string, string>;
-  export default content;
+  const classes: { [key: string]: string };
+  export = classes;
 }

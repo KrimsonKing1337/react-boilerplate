@@ -67,16 +67,12 @@ export default (env = {}, argv) => {
     },
     {
       test: /\.(jpeg|jpg|png|docx)$/i,
-      use: [
-        {
-          loader: 'url-loader',
-          options: {
-            esModule: false,
-          },
-        },
-      ],
+      type: 'asset/resource',
     },
-    { test: /\.(woff|woff2|eot|ttf|otf)$/, use: ['url-loader?limit=100000'] },
+    {
+      test: /\.(woff|woff2|eot|ttf)$/,
+      type: 'asset/resource',
+    },
   ];
 
   const buildDir = path.join(__dirname, 'dist');
